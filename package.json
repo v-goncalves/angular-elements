@@ -4,12 +4,14 @@
   "scripts": {
     "start": "./node_modules/.bin/ng serve --aot",
     "build": "./node_modules/.bin/ng build --prod --output-hashing=none",
-    "package": "rm -rf docs && mkdir docs && cp src/index.html docs/index.html && sed -i -- 's/<script title=\"production-script\" src=\"\">/<script src=\"elements.js\">/g' ./docs/index.html && cat dist/angular-elements/{polyfills,runtime,main}.js > docs/elements.js",
-    "serve-prod": "./node_modules/.bin/http-server docs/",
+    "package": "rm -rf dist-package && mkdir dist-package && cp src/index.html dist-package/index.html && sed -i -- 's/<script title=\"production-script\" src=\"\">/<script src=\"elements.js\">/g' ./dist-package/index.html && cat dist/angular-elements/{polyfills,runtime,main}.js > dist-package/elements.js",
+    "serve-prod": "./node_modules/.bin/http-server dist-package/",
     "test": "./node_modules/.bin/ng test",
     "lint": "./node_modules/.bin/ng lint",
     "e2e": "./node_modules/.bin/ng e2e",
-    "build-github-pages": "./node_modules/.bin/ng build --prod --output-path docs --base-href angular-elements && cp docs/index.html docs/404.html"
+    "build-for-github-pages": "./node_modules/.bin/ng build --prod --output-hashing=none --base-href angular-elements",
+    "package-for-github-pages": "rm -rf docs && mkdir docs && cp src/index.html docs/index.html && sed -i -- 's/<script title=\"production-script\" src=\"\">/<script src=\"elements.js\">/g' ./docs/index.html && cat dist/angular-elements/{polyfills,runtime,main}.js > docs/elements.js",
+    "generate-github-pages": "npm run build-for-github-pages && npm run package-for-github-pages && sed -i -- 's/<base href=\"\\/\">/<base href=\"angular-elements\">/g' ./docs/index.html && cp docs/index.html docs/404.html && rm -rf dist"
   },
   "private": true,
   "dependencies": {

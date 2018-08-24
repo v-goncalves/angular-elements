@@ -14,11 +14,11 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `npm run build && npm run package` to build and package the project. The build artifacts will be stored in the `dist/` directory and the composed production build in the directory `docs/`.
+Run `npm run build && npm run package` to build and package the project. The build artifacts will be stored in the `dist/` directory and the composed production build in the directory `dist-package/`.
 
 ## Run prod build
 
-Run `npm run build && npm run package && npm run serve-prod` to build, package end serve the production files. The build artifacts will be stored in the `dist/` directory and the composed production build in the directory `docs/`.
+Run `npm run build && npm run package && npm run serve-prod` to build, package end serve the production files. The build artifacts will be stored in the `dist/` directory and the composed production build in the directory `dist-package/`.
 
 ## Running unit tests
 
