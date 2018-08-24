@@ -1,10 +1,12 @@
 # AngularElements
 
+This project was based on the article [Building Custom Elements / Web Components with Angular 6](https://medium.com/@tomsu/building-web-components-with-angular-elements-746cd2a38d5b)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.4.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
@@ -12,7 +14,11 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `npm run build && npm run package` to build and package the project. The build artifacts will be stored in the `dist/` directory and the composed production build in the directory `docs/`.
+
+## Run prod build
+
+Run `npm run build && npm run package && npm run serve-prod` to build, package end serve the production files. The build artifacts will be stored in the `dist/` directory and the composed production build in the directory `docs/`.
 
 ## Running unit tests
 
