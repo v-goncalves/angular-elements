@@ -1,13 +1,15 @@
 {
   "name": "angular-elements",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "start": "./node_modules/.bin/ng serve --aot",
+    "build": "./node_modules/.bin/ng build --prod --output-hashing=none",
+    "package": "rm -rf docs && mkdir docs && cp src/index.html docs/index.html && sed -i -- 's/<script title=\"production-script\" src=\"\">/<script src=\"elements.js\">/g' ./docs/index.html && cat dist/angular-elements/{polyfills,runtime,main}.js > docs/elements.js",
+    "serve-prod": "./node_modules/.bin/http-server docs/",
+    "test": "./node_modules/.bin/ng test",
+    "lint": "./node_modules/.bin/ng lint",
+    "e2e": "./node_modules/.bin/ng e2e",
+    "build-github-pages": "./node_modules/.bin/ng build --prod --output-path docs --base-href angular-elements && cp docs/index.html docs/404.html"
   },
   "private": true,
   "dependencies": {
@@ -28,11 +30,15 @@
     "@angular-devkit/build-angular": "~0.7.0",
     "@angular/cli": "~6.1.4",
     "@angular/compiler-cli": "^6.1.0",
+    "@angular/elements": "^6.1.4",
     "@angular/language-service": "^6.1.0",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
+    "@webcomponents/custom-elements": "^1.2.0",
+    "@webcomponents/webcomponentsjs": "^2.1.0",
     "codelyzer": "~4.2.1",
+    "http-server": "^0.11.1",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "^3.0.0",
